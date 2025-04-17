@@ -1,0 +1,7 @@
+{
+    "exclude": [
+    "slogs",
+    "results",
+    "wandb",
+    ]
+}

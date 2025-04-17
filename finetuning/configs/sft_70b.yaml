@@ -1,0 +1,35 @@
+model:
+  _set_:
+    name: llama3_1_70b_instruct
+dataset:
+  _set_:
+    path: __put_your_own_file_here__
+    max_num_tokens: 8192
+    max_seq_len: 8192
+    source_encode_mode: as_is
+gang:
+  _set_:
+    tensor_parallel_size: 8
+optimizer:
+  config:
+    _set_:
+      lr: 2.5e-06
+      betas:
+        - 0.9
+        - 0.95
+      eps: 1.0e-08
+      weight_decay: 0.1
+lr_scheduler:
+  config:
+    _set_:
+      num_warmup_steps: 50
+      final_lr: 2.5e-07
+      final_lr_scale: null
+common:
+  metric_recorders:
+      wandb:
+        _set_:
+          run: ts_sft_70b_test
+regime:
+  _set_:
+    num_steps: 1000

@@ -1,0 +1,18 @@
+matrix @ git+ssh://git@github.com/facebookresearch/matrix.git@6d11f4ac604a34593906174a8e99a223a2ba6020
+
+pytorch-lightning>=2.4.0
+torch>=2.5.1
+torchmetrics==1.4.1
+redis==5.1.1
+pytest-asyncio==0.24.0
+streamlit==1.38.0
+
+aiohttp
+transformers
+fairscale
+jinja2
+flask
+wandb
+jsonargparse[signatures]>=4.27.7
+overrides
+scipy

@@ -1,0 +1,34 @@
+common:
+  metric_recorders:
+    wandb:
+      _set_:
+        run: test_dpo
+dataset:
+  _set_:
+    source_encode_mode: as_is
+    max_num_tokens: 8192
+criterion:
+  _set_:
+    name: dpo
+    config:
+      reference_model:
+        name: llama3_1_8b_instruct
+      reference_dtype: bfloat16
+      beta: 0.1
+      nll_scale: 0.0
+      length_normalization: false
+optimizer:
+  config:
+    _set_:
+      betas:
+      - 0.9
+      - 0.95
+      eps: 1.0e-08
+      lr: 1.0e-06
+      weight_decay: 0.1
+lr_scheduler:
+  config:
+    _set_:
+      final_lr: null
+      final_lr_scale: 0.1
+      num_warmup_steps: 50

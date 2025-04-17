@@ -1,0 +1,16 @@
+[tool.black]
+line-length = 88
+exclude = '/(libs|wandb|data|results)/'
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+skip = ["libs", "wandb", "results"]
+
+[tool.mypy]
+show_error_codes = true
+check_untyped_defs = true
+ignore_missing_imports = true
+implicit_optional = true
+implicit_reexport = true
+exclude = '/libs/'

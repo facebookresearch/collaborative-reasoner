@@ -1,0 +1,27 @@
+seed_everything: 333
+
+model:
+  class_path: lightning_modules.models.ts_interactive_model.TSInteractiveModel
+  init_args:
+    extractor:
+      class_path: evaluators.extraction_evaluators.MMLUProExtractionPromptingEvaluator
+      init_args:
+        app_name: 8B_grpc
+        model_name: meta-llama/Meta-Llama-3.1-8B-Instruct
+        request_timeout: 300
+        rater_temp: 0.0
+        max_tokens: 32
+    raters+:
+      - class_path: evaluators.match_evaluators.MMLUProMatchEvaluator
+        init_args: {}
+
+data:
+  class_path: lightning_modules.datasets.ts_mmlu_pro_dataset.MMLUProTSDataModule
+  init_args:
+    train_batch_size: 1
+    val_batch_size: 1_000_000
+    val_max_instances: 1_000_000
+    val_set_init_args:
+      file_path: data/mmlu_pro/resplit/val.jsonl
+      student_instruction: assistant_sbs_short
+      teacher_instruction: assistant_sbs_short

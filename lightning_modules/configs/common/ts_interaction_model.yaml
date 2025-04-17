@@ -1,0 +1,11 @@
+class_path: lightning_modules.models.ts_interactive_model.TSInteractiveModel
+init_args:
+  max_turns: 20
+  teacher_app_name: 8B_grpc
+  student_app_name: 8B_grpc
+  teacher_model: meta-llama/Meta-Llama-3.1-8B-Instruct
+  student_model: meta-llama/Meta-Llama-3.1-8B-Instruct
+  sampling_temp: 0.2
+  max_n_processes: 100
+  request_timeout: 600
+  use_matrix: True

@@ -1,0 +1,25 @@
+default_root_dir: &exp_name results/debug-tmp
+log_every_n_steps: 1
+logger+:
+  - class_path: lightning_modules.loggers.patched_loggers.PatchedWandbLogger
+    init_args:
+      entity: <your_wandb_entity>
+      project: <your_wandb_project>
+      save_dir: *exp_name
+      name: *exp_name
+      log_model: False
+      save_code: True
+      offline: False
+      # offline: True
+callbacks+:
+  - class_path: pytorch_lightning.callbacks.progress.TQDMProgressBar
+    init_args:
+      refresh_rate: 1
+
+accelerator: cpu
+devices: 1
+
+strategy:
+  class_path: pytorch_lightning.strategies.ddp.DDPStrategy
+  init_args:
+    timeout: "2:00:00"
